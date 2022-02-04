@@ -38,6 +38,5 @@ void RandomSubject::run()
     mIfs.read((char*)&mData, sizeof(mData));
     std::cout << "read from random: " << mData << endl;
     notify();
-    //this_thread::sleep_for(std::chrono::seconds(3));
   }
 }
