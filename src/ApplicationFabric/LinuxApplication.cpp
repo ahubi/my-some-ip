@@ -20,7 +20,7 @@ void LinuxApplication::startApplication()
   mRuntime->registerService("local", "test", myService);
   std::cout << "Successfully Registered Service!" << std::endl;
 	RandomSubject rndSub;
-  IObserver* someIP = (IObserver*) new SomeIPObserver(myService);
+  IObserver* someIP = (IObserver*) new RandomObserver(myService);
   rndSub.addObserver(someIP);
 
   thread t1(&RandomSubject::run, ref(rndSub));

@@ -10,14 +10,14 @@
 using namespace std;
 using namespace v1_0::commonapi;
 
-class SomeIPObserver
+class RandomObserver
 :IObserver
 {
 private:
   std::shared_ptr<HelloWorldStubImpl> myService;
 public:
-  SomeIPObserver(shared_ptr<HelloWorldStubImpl> myService);
-  ~SomeIPObserver();
+  RandomObserver(shared_ptr<HelloWorldStubImpl> myService);
+  ~RandomObserver();
   virtual void update(void* data);
 };
 

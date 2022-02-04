@@ -1,14 +1,14 @@
-#include "SomeIPObserver.h"
+#include "RandomObserver.h"
 
-SomeIPObserver::SomeIPObserver(shared_ptr<HelloWorldStubImpl> service_)
+RandomObserver::RandomObserver(shared_ptr<HelloWorldStubImpl> service_)
 {
   myService = service_;
 }
 
-SomeIPObserver::~SomeIPObserver() {
+RandomObserver::~RandomObserver() {
 }
 
-void SomeIPObserver::update(void* data) {
+void RandomObserver::update(void* data) {
   int i = 0;
   CustomTypes::AttributeStruct attr = CustomTypes::AttributeStruct(i, "RandomSubject");
   int num = *(int*)data;

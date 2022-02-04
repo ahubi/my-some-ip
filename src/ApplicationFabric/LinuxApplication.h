@@ -4,7 +4,7 @@
 #include <iostream>
 #include "IApplication.h"
 #include "../model/RandomSubject.h"
-#include "../someip/SomeIPObserver.h"
+#include "../someip/RandomObserver.h"
 
 using namespace std;
 

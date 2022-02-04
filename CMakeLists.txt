@@ -28,7 +28,7 @@ add_executable(HelloWorldService
 	src/ApplicationFabric/LinuxApplication.cpp
 	src/ApplicationFabric/LinuxApplicationFabric.cpp
 	src/model/RandomSubject.cpp
-	src/someip/SomeIPObserver.cpp
+	src/someip/RandomObserver.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPStubAdapter.cpp
 	src-gen/v1/commonapi/HelloWorldStubDefault.hpp
 	src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp
