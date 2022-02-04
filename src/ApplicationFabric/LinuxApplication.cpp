@@ -19,16 +19,25 @@ void LinuxApplication::startApplication()
   myService = std::make_shared<HelloWorldStubImpl>();
   mRuntime->registerService("local", "test", myService);
   std::cout << "Successfully Registered Service!" << std::endl;
+
 	RandomSubject rndSub;
   IObserver* someIP = (IObserver*) new RandomObserver(myService);
   rndSub.addObserver(someIP);
 
   thread t1(&RandomSubject::run, ref(rndSub));
+  
+  SyslogSubject sysSub;
+  IObserver* sysLog = (IObserver*) new SyslogObserver(myService);
+  sysSub.addObserver(sysLog);
+
+  thread t2(&SyslogSubject::run, ref(sysSub));
+  
   cout << "LinuxApplication started" << endl;
 
 	int l_signal;
 	sigwait (&l_waitedSignals, &l_signal);
   t1.join();
+  t2.join();
 }
 void LinuxApplication::stopApplication()
 {

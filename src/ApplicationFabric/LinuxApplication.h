@@ -5,6 +5,8 @@
 #include "IApplication.h"
 #include "../model/RandomSubject.h"
 #include "../someip/RandomObserver.h"
+#include "../model/SyslogSubject.h"
+#include "../someip/SyslogObserver.h"
 
 using namespace std;
 
