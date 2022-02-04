@@ -15,8 +15,12 @@ void LinuxApplication::startApplication()
 	sigemptyset (&l_waitedSignals);
 	sigaddset (&l_waitedSignals, SIGTERM);
 	sigprocmask (SIG_BLOCK, &l_waitedSignals, nullptr);
+  mRuntime = CommonAPI::Runtime::get();
+  myService = std::make_shared<HelloWorldStubImpl>();
+  mRuntime->registerService("local", "test", myService);
+  std::cout << "Successfully Registered Service!" << std::endl;
 	RandomSubject rndSub;
-  IObserver* someIP = (IObserver*) new SomeIPObserver();
+  IObserver* someIP = (IObserver*) new SomeIPObserver(myService);
   rndSub.addObserver(someIP);
 
   thread t1(&RandomSubject::run, ref(rndSub));

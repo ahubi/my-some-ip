@@ -1,10 +1,8 @@
 #include "SomeIPObserver.h"
 
-SomeIPObserver::SomeIPObserver() {
-  mRuntime = CommonAPI::Runtime::get();
-  myService = std::make_shared<HelloWorldStubImpl>();
-  mRuntime->registerService("local", "test", myService);
-  std::cout << "Successfully Registered Service!" << std::endl;
+SomeIPObserver::SomeIPObserver(shared_ptr<HelloWorldStubImpl> service_)
+{
+  myService = service_;
 }
 
 SomeIPObserver::~SomeIPObserver() {

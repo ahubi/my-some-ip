@@ -14,10 +14,9 @@ class SomeIPObserver
 :IObserver
 {
 private:
-  std::shared_ptr<CommonAPI::Runtime> mRuntime;
   std::shared_ptr<HelloWorldStubImpl> myService;
 public:
-  SomeIPObserver();
+  SomeIPObserver(shared_ptr<HelloWorldStubImpl> myService);
   ~SomeIPObserver();
   virtual void update(void* data);
 };

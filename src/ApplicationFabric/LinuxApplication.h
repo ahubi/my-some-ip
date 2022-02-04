@@ -12,7 +12,8 @@ class LinuxApplication
 :IApplication
 {
 private:
-  /* data */
+  shared_ptr<CommonAPI::Runtime> mRuntime;
+  shared_ptr<HelloWorldStubImpl> myService;
 public:
   LinuxApplication();
   ~LinuxApplication();
