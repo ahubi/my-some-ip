@@ -1,4 +1,0 @@
-/home/artur/my-some-ip/build/CMakeFiles/rebuild_cache.dir
-/home/artur/my-some-ip/build/CMakeFiles/edit_cache.dir
-/home/artur/my-some-ip/build/CMakeFiles/HelloWorldService.dir
-/home/artur/my-some-ip/build/CMakeFiles/HelloWorldClient.dir
