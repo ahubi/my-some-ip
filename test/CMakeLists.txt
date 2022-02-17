@@ -7,6 +7,8 @@ add_executable(
 target_link_libraries(
   unit_test
   gtest_main
+  my-some-ip
+  CommonAPI
 )
 
 include(GoogleTest)
