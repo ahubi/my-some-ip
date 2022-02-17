@@ -5,6 +5,17 @@ message(STATUS ${RUNTIME_PATH})
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++11")
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG        release-1.11.0
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 include_directories(
     src-gen
     ${RUNTIME_PATH}/capicxx-core-runtime/include
@@ -16,6 +27,7 @@ link_directories(
     ${RUNTIME_PATH}/capicxx-someip-runtime/build
     ${RUNTIME_PATH}/vsomeip/build
 )
+
 add_executable(HelloWorldClient
 	src/HelloWorldClient.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPProxy.cpp
@@ -36,3 +48,4 @@ add_executable(HelloWorldService
 	src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp
 )
 target_link_libraries(HelloWorldService CommonAPI CommonAPI-SomeIP vsomeip3)
+add_subdirectory(test)
