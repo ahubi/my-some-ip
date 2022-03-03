@@ -32,11 +32,15 @@ void SyslogSubject::notify()
 }
 void SyslogSubject::run()
 {
+  random_device rd;  //Will be used to obtain a seed for the random number engine
+  mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+  uniform_int_distribution<> distrib(1, 5);
   while(mIfs.good())
   {
-    std::getline(mIfs, mData);
-    std::cout << "read from syslog: " << mData << endl;
+    int sleep = distrib(gen);
+    getline(mIfs, mData);
+    cout << "read from syslog, sleep for: " << sleep << endl;
     notify();
-    this_thread::sleep_for(std::chrono::seconds(3));
+    this_thread::sleep_for(std::chrono::seconds(sleep));
   }
 }

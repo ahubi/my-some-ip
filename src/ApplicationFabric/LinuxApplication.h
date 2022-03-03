@@ -7,6 +7,7 @@
 #include "../someip/RandomObserver.h"
 #include "../model/SyslogSubject.h"
 #include "../someip/SyslogObserver.h"
+#include <boost/asio.hpp>
 
 using namespace std;
 

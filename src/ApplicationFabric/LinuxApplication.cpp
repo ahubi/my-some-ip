@@ -20,23 +20,25 @@ void LinuxApplication::startApplication()
   mRuntime->registerService("local", "test", myService);
   std::cout << "Successfully Registered Service!" << std::endl;
 
-	RandomSubject rndSub;
-  IObserver* someIP = (IObserver*) new RandomObserver(myService);
-  rndSub.addObserver(someIP);
+	//RandomSubject rndSub;
+  //IObserver* someIP = (IObserver*) new RandomObserver(myService);
+  //rndSub.addObserver(someIP);
 
-  thread t1(&RandomSubject::run, ref(rndSub));
+  //thread t1(&RandomSubject::run, ref(rndSub));
   
   SyslogSubject sysSub;
-  IObserver* sysLog = (IObserver*) new SyslogObserver(myService);
+  boost::asio::io_service io;
+  boost::asio::io_service::work work(io);
+  IObserver* sysLog = (IObserver*) new SyslogObserver(myService, io);
   sysSub.addObserver(sysLog);
 
   thread t2(&SyslogSubject::run, ref(sysSub));
-  
+  std::thread thread([&]{io.run();});
+    
   cout << "LinuxApplication started" << endl;
-
-	int l_signal;
+  int l_signal;
 	sigwait (&l_waitedSignals, &l_signal);
-  t1.join();
+  //1.join();
   t2.join();
 }
 void LinuxApplication::stopApplication()
