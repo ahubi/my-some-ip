@@ -20,6 +20,7 @@ void SyslogObserver::update(void* data) {
 void SyslogObserver::on_timeout(const boost::system::error_code& error){
   if (!error)
   {
-    std::cout << "Timeout occured in SyslogObserver" << std::endl;
+    myService->fireStatusEvent("Timeout occured in SyslogObserver");
+    //std::cout << "Timeout occured in SyslogObserver" << std::endl;
   }
 }
