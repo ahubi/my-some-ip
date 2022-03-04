@@ -36,7 +36,7 @@ void RandomSubject::run()
   while(mIfs.good())
   {
     mIfs.read((char*)&mData, sizeof(mData));
-    std::cout << "read from random: " << mData << endl;
+    //std::cout << "read from random: " << mData << endl;
     notify();
   }
 }

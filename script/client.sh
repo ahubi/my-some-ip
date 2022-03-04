@@ -6,5 +6,5 @@ COMMONAPI_SOMEIP_PATH=~/capicxx-someip-runtime/build
 VSOMEIP_PATH=~/vsomeip/build
 export LD_LIBRARY_PATH=${COMMONAPI_PATH}:${COMMONAPI_SOMEIP_PATH}:${VSOMEIP_PATH}:$LD_LIBRARY_PATH
 export VSOMEIP_APPLICATION_NAME=client-sample
-#export VSOMEIP_CONFIGURATION=../config/vsomeip-service.json
+#export VSOMEIP_CONFIGURATION=../config/vsomeip-client.json
 ../build/HelloWorldClient

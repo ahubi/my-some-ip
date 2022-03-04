@@ -23,6 +23,11 @@ int main() {
         cout << "Received status event: " << val << std::endl;
     });
 
+    CommonAPI::CallStatus callStatus;
+    std::string returnMessage;
+    myProxy->sayHello("Bob", callStatus, returnMessage);
+    cout << "Got message: '" << returnMessage << "'\n";
+
     sigset_t l_waitedSignals;
 	sigemptyset (&l_waitedSignals);
 	sigaddset (&l_waitedSignals, SIGTERM);
@@ -30,10 +35,6 @@ int main() {
 	cout << "The office daemon has successfully started up." << endl;
 	int l_signal;
 	sigwait (&l_waitedSignals, &l_signal);
-	
-    CommonAPI::CallStatus callStatus;
-    std::string returnMessage;
-    myProxy->sayHello("Bob", callStatus, returnMessage);
-    cout << "Got message: '" << returnMessage << "'\n";
+    
     return 0;
 }
