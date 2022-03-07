@@ -27,11 +27,11 @@ link_directories(
     ${RUNTIME_PATH}/capicxx-someip-runtime/build
     ${RUNTIME_PATH}/vsomeip/build
 )
+FILE(GLOB GEN_SRCS src-gen/*cpp)
 
 add_executable(HelloWorldClient
-	src/HelloWorldClient.cpp
-	src-gen/v1/commonapi/HelloWorldSomeIPProxy.cpp
-	src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp
+  ${GEN_SRCS}
+  src/HelloWorldClient.cpp
 )
 target_link_libraries(HelloWorldClient CommonAPI CommonAPI-SomeIP vsomeip3)
 
@@ -43,10 +43,7 @@ add_executable(HelloWorldService
               src/model/RandomSubject.cpp
               src/model/SyslogSubject.cpp
               src/someip/RandomObserver.cpp
-              src/someip/SyslogObserver.cpp
-              src-gen/v1/commonapi/HelloWorldSomeIPStubAdapter.cpp
-              src-gen/v1/commonapi/HelloWorldStubDefault.hpp
-              src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp)
+              src/someip/SyslogObserver.cpp)
 
 target_link_libraries(HelloWorldService CommonAPI CommonAPI-SomeIP vsomeip3)
 add_subdirectory(test)
