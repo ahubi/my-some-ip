@@ -18,9 +18,15 @@ auto as_integer(Enumeration const value)
 }
 
 int main() {
-    std::shared_ptr < CommonAPI::Runtime > runtime = CommonAPI::Runtime::get();
+    cout << "client's main started" << endl;
+    std::shared_ptr <CommonAPI::Runtime> runtime = CommonAPI::Runtime::get();
     std::shared_ptr<HelloWorldProxy<>> myProxy = runtime->buildProxy<HelloWorldProxy>("local", "test");
-
+    
+    if(myProxy == nullptr){
+        cout << "HelloWorldProxy creation failed" << endl;
+        return -1;
+    }
+    cout << "HelloWorldProxy created" << endl;
     bool avail = myProxy->isAvailableBlocking();
     
     cout << "HelloWorldProxy is available: " << avail << endl;

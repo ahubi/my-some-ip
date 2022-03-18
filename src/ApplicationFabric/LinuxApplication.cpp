@@ -21,16 +21,16 @@ void LinuxApplication::startApplication()
   std::cout << "Successfully Registered Service!" << std::endl;
 
 	RandomSubject rndSub;
-  IObserver* someIP = (IObserver*) new RandomObserver(myService);
-  rndSub.addObserver(someIP);
+  shared_ptr<IObserver> someIP((IObserver*) new RandomObserver(myService));
+  rndSub.addObserver(someIP.get());
 
   thread t1(&RandomSubject::run, ref(rndSub));
   
   SyslogSubject sysSub;
   boost::asio::io_service io;
   boost::asio::io_service::work work(io);
-  IObserver* sysLog = (IObserver*) new SyslogObserver(myService, io);
-  sysSub.addObserver(sysLog);
+  shared_ptr<IObserver> sysLog((IObserver*) new SyslogObserver(myService, io));
+  sysSub.addObserver(sysLog.get());
 
   thread t2(&SyslogSubject::run, ref(sysSub));
   std::thread thread([&]{io.run();});
