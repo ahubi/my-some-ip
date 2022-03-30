@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../unit-test"
+		},
+		{
+			"path": "../c++/concurrency"
 		}
 	],
 	"settings": {
